@@ -1,7 +1,11 @@
 # Terraform: Docker & Kurbernetes
 
 ## Overview
-A minimal REST API deployed on AWS EC2 that converts pounds (lbs) to kilograms (kg).
+This project gives students hands-on practice with Terraform using two environments:
+1. Local Docker infrastructure
+2. A lightweight Kubernetes cluster (k3d or kind)
+
+Students will build, extend, test, and document their infrastructure as code. Both demos are intentionally simple but realistic enough to teach core Terraform concepts: modules, state, variables, outputs, iteration, and dependency graphs.
 
 ## Setup Steps
 1. Select **Amazon Linux 2023** EC2 instance (t3.micro).

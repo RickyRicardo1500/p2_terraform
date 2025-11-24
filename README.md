@@ -9,18 +9,14 @@ Students will build, extend, test, and document their infrastructure as code. Bo
 
 PART 1 — DOCKER TERRAFORM PROJECT
 
-Goal:
-
-Use Terraform to provision a small “local cloud” made of Docker containers:
+Goal: Use Terraform to provision a small “local cloud” made of Docker containers:
 - One frontend (Nginx)
 - One backend (Python/Node/Go microservice — can be trivial)
 - One database (Postgres)
 
 PART 2 — KUBERNETES TERRAFORM PROJECT
 
-Goal:
-
-Use Terraform to manage a tiny Kubernetes cluster using k3d or kind.
+Goal: Use Terraform to manage a tiny Kubernetes cluster using k3d or kind.
 
 ## Setup Steps
 1. Select **Amazon Linux 2023** EC2 instance (t3.micro).

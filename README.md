@@ -31,41 +31,29 @@ If using Putty use insert your keypair in the auth tab then login using your <PU
 
 6. Clone Git Repo & change working directory
 ```bash
-git clone https://github.com/RickyRicardo1500/p1.git && cd p1
+git clone https://github.com/RickyRicardo1500/p2_terraform.git && cd p2_terraform
 ```
-7. Update & install Node.js
+7. Install terraform
 ```bash
-sudo yum update -y && sudo yum install -y nodejs npm
+sudo yum install -y yum-utils shadow-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum install terraform
 ```
-8. Initialize Node Package Manager
+8. Verify terraform
 ```bash
-npm init -y
+terraform -version
 ```
-9. Install Express & Morgan
+9. Install & Run docker
 ```bash
-npm install express morgan
+sudo yum install docker
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+newgrp docker
 ```
-10. Copy the entire command below into the bash shell
+10. Verify docker
 ```bash
-cat > server.js <<'EOF'
-const express = require('express');
-const morgan = require('morgan');
-const app = express();
-app.use(morgan('combined'));
-app.get('/convert', (req, res) => {
-const lbs = Number(req.query.lbs);
-if (req.query.lbs === undefined || Number.isNaN(lbs)) {
-return res.status(400).json({ error: 'Query param lbs is required and must be a number' });
-}
-if (!Number.isFinite(lbs) || lbs < 0) {
-return res.status(422).json({ error: 'lbs must be a non-negative, finite number' });
-}
-const kg = Math.round(lbs * 0.45359237 * 1000) / 1000;
-return res.json({ lbs, kg, formula: 'kg = lbs * 0.45359237' });
-});
-const port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`listening on ${port}`));
-EOF
+docker ps
+systemctl | grep docker
 ```
 11. Start Node.js
 ```bash

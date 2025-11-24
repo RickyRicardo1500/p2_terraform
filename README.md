@@ -33,27 +33,27 @@ If using Putty use insert your keypair in the auth tab then login using your <PU
 ```bash
 git clone https://github.com/RickyRicardo1500/p2_terraform.git && cd p2_terraform
 ```
-7. Install terraform
-```bash
-sudo yum install -y yum-utils shadow-utils
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-sudo yum install terraform
-```
-8. Verify terraform
-```bash
-terraform -version
-```
-9. Install & Run docker
+7. Install & Run docker
 ```bash
 sudo yum install docker
 sudo systemctl enable --now docker
 sudo usermod -aG docker $USER
 newgrp docker
 ```
-10. Verify docker
+8. Verify docker (Empty table prints out successfully)
 ```bash
 docker ps
 systemctl | grep docker
+```
+9. Install terraform
+```bash
+sudo yum install -y yum-utils shadow-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum install terraform
+```
+10. Verify terraform (Terraform installed)
+```bash
+terraform -version
 ```
 11. Start Node.js
 ```bash

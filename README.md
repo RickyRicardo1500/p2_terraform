@@ -1,4 +1,4 @@
-# EC2 REST Converter: Pounds → Kilograms
+# Terraform: Docker & Kurbernetes
 
 ## Overview
 A minimal REST API deployed on AWS EC2 that converts pounds (lbs) to kilograms (kg).

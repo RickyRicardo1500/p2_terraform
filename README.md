@@ -40,7 +40,7 @@ sudo systemctl enable --now docker
 sudo usermod -aG docker $USER
 newgrp docker
 ```
-8. Verify docker (Empty table prints out successfully)
+8. Verify docker (Empty table prints out successfully & processes are running)
 ```bash
 docker ps
 systemctl | grep docker

@@ -7,15 +7,15 @@ This project gives students hands-on practice with Terraform using two environme
 
 Students will build, extend, test, and document their infrastructure as code. Both demos are intentionally simple but realistic enough to teach core Terraform concepts: modules, state, variables, outputs, iteration, and dependency graphs.
 
-PART 1 — DOCKER TERRAFORM PROJECT
-Goal:
+PART 1 — DOCKER TERRAFORM PROJECT;
+Goal:;
 Use Terraform to provision a small “local cloud” made of Docker containers:
 - One frontend (Nginx)
 - One backend (Python/Node/Go microservice — can be trivial)
 - One database (Postgres)
 
-PART 2 — KUBERNETES TERRAFORM PROJECT
-Goal:
+PART 2 — KUBERNETES TERRAFORM PROJECT;
+Goal:;
 Use Terraform to manage a tiny Kubernetes cluster using k3d or kind.
 
 ## Setup Steps

@@ -20,32 +20,30 @@ Goal: Use Terraform to manage a tiny Kubernetes cluster using k3d or kind.
 
 ## Directory Tree
 
-├── part1-docker/
-│   ├── main.tf
-│   ├── variables.tf
-│   ├── terraform.tfvars
-│   ├── providers.tf
-│   ├── modules/
-│   │   ├── network/
-│   │   ├── postgres/
-│   │   ├── backend/
-│   │   ├── frontend/
-│   │   └── redis/      # enhancement
-│   
-│
-└── part2-k8s/
-│   ├── main.tf
-│   ├── providers.tf
-│   ├── variables.tf
-│   ├── modules/
-│   │   ├── namespace/
-│   │   ├── deployment/
-│   │   ├── service/
-│   │   └── hpa/         # enhancement
-│   
-│
-└── README.md
-
+```
+|->Terraform Project
+|->README.md
+|->terraform-docker/
+    |-> main.tf
+    |-> variables.tf
+    |-> terraform.tfvars
+    |-> providers.tf
+    |-> modules/
+        |-> network/
+        |-> postgres/
+        |-> backend/
+        |-> frontend/
+        |-> redis/      # enhancement
+|->terraform-k8s
+    |-> main.tf
+    |-> variables.tf
+    |-> providers.tf
+    |-> modules/
+        |-> namespace/
+        |-> deployment/
+        |-> service/
+        |-> hpa/      # enhancement
+```
 
 ## Setup Steps (Docker)
 1. Select **Amazon Linux 2023** EC2 instance (t3.micro).

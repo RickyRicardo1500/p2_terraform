@@ -23,7 +23,3 @@ resource "docker_container" "redis" {
     external = 6379
   }
 }
-
-output "container_name" {
-  value = docker_container.redis.name
-}

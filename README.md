@@ -124,7 +124,7 @@ Commercial support is available at
 ```bash
 docker network ls
 docker network disconnect $NETWORKID
-docker container ls
+docker container ls -a
 docker container rm $CONTAINERID
 ```
 

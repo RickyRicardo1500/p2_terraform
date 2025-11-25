@@ -120,6 +120,14 @@ Commercial support is available at
 </html>
 ```
 
+12. Disconnect & Remove Container
+```bash
+docker network ls
+docker network disconnect $NETWORKID
+docker container ls
+docker container rm $CONTAINERID
+```
+
 ## Setup Steps (Kubernetes) *** (Continue from Docker Setup Steps)
 1. Change directory
 ```bash

@@ -141,7 +141,7 @@ curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 ```
 3. Create cluster
 ```bash
-k3d cluster create demo-cluster --servers 1 --agents 1 --port "8080:80@loadbalancer"
+k3d cluster create demo-cluster --servers 1 --agents 1 --port "8081:81@loadbalancer"
 ```
 4. Test
 ```bash
@@ -152,7 +152,7 @@ kubectl get nodes
 terraform init -upgrade
 terraform apply -auto-approve
 ```
-10. View resources (Terraform installed)
+10. View nodes
 ```bash
 kubectl get all -n demo
 ```

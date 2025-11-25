@@ -9,20 +9,28 @@ terraform {
 
 provider "docker" {}
 
-resource "docker_network" "demo" {
-  name = "demo-net"
+module "network" {
+  source       = "./modules/network"
+  network_name = "demo-net"
 }
 
-resource "docker_container" "nginx" {
-  name  = "demo-nginx"
-  image = "nginx:latest"
+module "postgres" {
+  source      = "./modules/postgres"
+  db_user     = var.db_user
+  db_password = var.db_password
+  db_name     = var.db_name
+  network     = module.network.network_name
+}
 
-  networks_advanced {
-    name = docker_network.demo.name
-  }
+module "backend" {
+  source      = "./modules/backend"
+  db_user     = var.db_user
+  db_password = var.db_password
+  db_name     = var.db_name
+  network     = module.network.network_name
+}
 
-  ports {
-    internal = 80
-    external = 8080
-  }
+module "frontend" {
+  source  = "./modules/frontend"
+  network = module.network.network_name
 }

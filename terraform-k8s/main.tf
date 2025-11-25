@@ -1,34 +1,23 @@
-terraform {
-  required_providers {
-    kubernetes = {
-      source = "hashicorp/kubernetes"
-      version = "~> 2.0"
-    }
-    helm = {
-      source = "hashicorp/helm"
-      version = "~> 2.0"
-    }
-  }
-}
-
-provider "kubernetes" {
-  config_path = "~/.kube/config"
-}
-
-provider "helm" {
-  kubernetes {
-    config_path = "~/.kube/config"
-  }
-}
-
 module "namespace" {
-  source = "./modules/namespace"
-  name   = "demo"
+  source    = "./modules/namespace"
+  name      = var.namespace
 }
 
-resource "helm_release" "nginx" {
-  name       = "demo-nginx"
-  repository = "https://charts.bitnami.com/bitnami"
-  chart      = "nginx"
-  namespace  = module.namespace.name
+module "deployment" {
+  source         = "./modules/deployment"
+  namespace      = module.namespace.name
+  image          = var.image
+  replicas       = var.replicas
+}
+
+module "service" {
+  source         = "./modules/service"
+  namespace      = module.namespace.name
+  app_label      = module.deployment.app_label
+}
+
+module "hpa" {
+  source         = "./modules/hpa"
+  namespace      = module.namespace.name
+  deployment     = module.deployment.name
 }

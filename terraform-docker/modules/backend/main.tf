@@ -1,24 +1,30 @@
-terraform {
-  required_providers {
-    docker = {
-      source = "kreuzwerker/docker"
-    }
+resource "docker_image" "backend" {
+  name = "simple-backend:latest"
+
+  build {
+    context = "${path.module}"
   }
 }
 
 resource "docker_container" "backend" {
-  name  = "backend-api"
-  image = docker_image.backend.latest
+  name  = "backend"
+  image = docker_image.backend.image_id
 
   env = [
-    "DB_HOST=postgres-db",
-    "DB_USER=${var.db_user}",
-    "DB_PASSWORD=${var.db_password}",
-    "DB_NAME=${var.db_name}"
+  "DB_HOST=${var.db_host}",
+  "REDIS_HOST=${var.redis_host}"
   ]
 
   networks_advanced {
-    name = var.network
+    name = var.network_name
+  }
+
+  ports {
+    internal = 5000
+    external = 5000
   }
 }
 
+output "container_name" {
+  value = docker_container.backend.name
+}

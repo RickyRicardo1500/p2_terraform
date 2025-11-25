@@ -1,3 +1,2 @@
-variable "network" {
-  type = string
-}
+variable "network_name" {}
+variable "backend_host" {}

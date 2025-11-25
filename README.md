@@ -66,7 +66,7 @@ terraform apply -auto-approve
 curl http://localhost:8081
 ```
 
-Result\
+Result
 ```bash
 <!DOCTYPE html>
 <html>

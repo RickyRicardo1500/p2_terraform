@@ -1,15 +1,8 @@
 terraform {
   required_providers {
     docker = {
-      source  = "kreuzwerker/docker"
+      source = "kreuzwerker/docker"
     }
-  }
-}
-
-resource "docker_image" "backend" {
-  name = "demo-backend:latest"
-  build {
-    context = "${path.module}/app"
   }
 }
 
@@ -28,3 +21,4 @@ resource "docker_container" "backend" {
     name = var.network
   }
 }
+

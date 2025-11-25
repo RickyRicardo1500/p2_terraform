@@ -120,7 +120,7 @@ Commercial support is available at
 </html>
 ```
 
-12. Disconnect & Remove Container
+12. Disconnect & Remove Containers
 ```bash
 docker network ls
 docker network disconnect $NETWORKID

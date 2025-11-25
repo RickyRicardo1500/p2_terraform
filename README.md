@@ -188,6 +188,13 @@ Commercial support is available at
 </html>
 ```
 
+13. Disconnect & Remove Clusters
+```bash
+k3d cluster list
+k3d cluster stop $NAME
+k3d cluster rm $NAME
+```
+
 
 Delete EC2 instance when done\
 Navigate back to AWS EC2 instance via the browser. Under the Instance State Menu, terminate the instance.

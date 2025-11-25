@@ -122,10 +122,11 @@ Commercial support is available at
 
 13. Disconnect & Remove Containers
 ```bash
+docker container ls -a
+docker container stop $CONTAINERID
+docker container rm $CONTAINERID
 docker network ls
 docker network disconnect $NETWORKID
-docker container ls -a
-docker container rm $CONTAINERID
 ```
 
 ## Setup Steps (Kubernetes) *** (Continue from Docker Setup Steps)

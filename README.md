@@ -139,7 +139,7 @@ cd ~/p2_terraform/terraform-k8s
 ```bash
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 ```
-3. Create cluster
+3. Create cluster (~10mins)
 ```bash
 k3d cluster create demo-cluster --servers 1 --agents 1 --port "8081:81@loadbalancer"
 ```

@@ -127,6 +127,7 @@ docker container stop $CONTAINERID
 docker container rm $CONTAINERID
 docker network ls
 docker network disconnect $NETWORKID
+docker network rm $NETWORKID
 ```
 
 ## Setup Steps (Kubernetes) *** (Continue from Docker Setup Steps)

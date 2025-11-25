@@ -66,9 +66,6 @@ terraform apply -auto-approve
 curl http://localhost:8081
 ```
 
-18. Delete EC2 instance when done\
-    Navigate back to AWS EC2 instance via the browser. Under the Instance State Menu, terminate the instance.
-
 ## Setup Steps (Kubernetes)
 1. Select **Amazon Linux 2023** EC2 instance (t3.micro).
 2. Create a new key pair or reuse a created key from the drop down menu.
@@ -205,5 +202,7 @@ curl 'http://<PUBLIC_IP>:8080/convert'
 ```bash
 curl 'http://<PUBLIC_IP>:8080/convert?lbs=NaN'
 ```
-18. Delete EC2 instance when done\
-    Navigate back to AWS EC2 instance via the browser. Under the Instance State Menu, terminate the instance.
+
+
+Delete EC2 instance when done\
+Navigate back to AWS EC2 instance via the browser. Under the Instance State Menu, terminate the instance.

@@ -144,108 +144,12 @@ terraform apply -auto-approve
 ```
 10. View resources (Terraform installed)
 ```bash
-terraform -version
+kubectl get all -n demo
 ```
-11. Start Node.js
+11. Test
 ```bash
-node server.js
+curl http://localhost:8081
 ```
-12. Create a systemd unit
-```bash
-sudo bash -c 'cat > /etc/systemd/system/p1.service <<"UNIT"
-[Unit]
-Description=CS554 Project 1 service
-After=network.target
-
-[Service]
-User=ec2-user
-WorkingDirectory=/home/ec2-user/p1
-ExecStart=/usr/bin/node /home/ec2-user/p1/server.js
-Restart=always
-Environment=PORT=8080
-
-[Install]
-WantedBy=multi-user.target
-UNIT'
-```
-13. Enable systemctl
-```bash
-sudo systemctl daemon-reload
-```
-```bash
-sudo systemctl enable --now p1
-```
-```bash
-sudo systemctl status p1 --no-pager
-```
-14. NGINX Reverse Proxy
-```bash
-sudo yum install -y nginx
-```
-```bash
-sudo nano /etc/nginx/conf.d/default.conf
-```
-Delete contents in the file and paste the content below in the file and save it
-```bash
-server {
-    listen       80;
-    server_name  _;
-
-    location / {
-        proxy_pass         http://127.0.0.1:8080;
-        proxy_http_version 1.1;
-        proxy_set_header   Upgrade $http_upgrade;
-        proxy_set_header   Connection 'upgrade';
-        proxy_set_header   Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
-Test the config
-```bash
-sudo nginx -t
-```
-16. Reload Nginx
-```bash
-sudo systemctl restart nginx
-```
-```bash
-sudo systemctl enable nginx
-```
-17. Test the Cases\
-- 1. Happy path: /convert?lbs=0 = 0.000 kg
-- 2. Typical: /convert?lbs=150 = 68.039 kg
-- 3. Edge: /convert?lbs=0.1 = 0.045 kg
-- 4. Error: /convert (missing param) = 400
-- 5. Error: /convert?lbs=-5 = 422
-- 6. Error: /convert?lbs=NaN = 400
-
-Run commands for test cases in shell below
-- 1.
-```bash
-curl 'http://<PUBLIC_IP>:8080/convert?lbs=0'
-```
-- 2.
-```bash
-curl 'http://<PUBLIC_IP>:8080/convert?lbs=150'
-```
-- 3.
-```bash
-curl 'http://<PUBLIC_IP>:8080/convert?lbs=150'
-```
-- 4.
-```bash
-curl 'http://<PUBLIC_IP>:8080/convert?lbs=0.1'
-```
-- 5.
-```bash
-curl 'http://<PUBLIC_IP>:8080/convert'
-```
-- 6.
-```bash
-curl 'http://<PUBLIC_IP>:8080/convert?lbs=NaN'
-```
-
 
 Delete EC2 instance when done\
 Navigate back to AWS EC2 instance via the browser. Under the Instance State Menu, terminate the instance.

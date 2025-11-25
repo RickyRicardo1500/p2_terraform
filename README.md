@@ -18,6 +18,9 @@ PART 2 — KUBERNETES TERRAFORM PROJECT
 
 Goal: Use Terraform to manage a tiny Kubernetes cluster using k3d or kind.
 
+## Directory Tree
+
+
 ## Setup Steps (Docker)
 1. Select **Amazon Linux 2023** EC2 instance (t3.micro).
 2. Create a new key pair or reuse a created key from the drop down menu.

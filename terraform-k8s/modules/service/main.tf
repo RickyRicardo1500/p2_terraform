@@ -10,8 +10,8 @@ resource "kubernetes_service" "svc" {
     }
 
     port {
-      port        = 80
-      target_port = 80
+      port        = 81
+      target_port = 81
     }
 
     type = "NodePort"

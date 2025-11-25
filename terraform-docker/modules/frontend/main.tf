@@ -16,7 +16,7 @@ resource "docker_container" "frontend" {
 
   ports {
     internal = 80
-    external = 8080
+    external = 8081
   }
 
   networks_advanced {

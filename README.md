@@ -120,40 +120,29 @@ Commercial support is available at
 </html>
 ```
 
-## Setup Steps (Kubernetes)
-1. Select **Amazon Linux 2023** EC2 instance (t3.micro).
-2. Create a new key pair or reuse a created key from the drop down menu.
-3. Allow SSH(22) traffic from my IP, allow HTTPS(443) and HTTP(80) from Anywhere IPv4, and allow custom TCP with Port 8080 from Anywhere IPv4
-4. Launch the instance using the Pulbic IPv4 address
-5. SSH into the instance:
+## Setup Steps (Kubernetes) *** (Continue from Docker Setup Steps)
+1. Change directory
 ```bash
-ssh -i MyKeyPair.pem ec2-user@<PUBLIC_IP>
+cd ~/p2_terraform/terraform-k8s
 ```
-If using Putty use insert your keypair in the auth tab then login using your <PUBLIC_IP>
-
-6. Clone Git Repo & change working directory
+2. Install k3d
 ```bash
-git clone https://github.com/RickyRicardo1500/p2_terraform.git && cd p2_terraform
+curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 ```
-7. Install & Run docker
+3. Create cluster
 ```bash
-sudo yum install docker
-sudo systemctl enable --now docker
-sudo usermod -aG docker $USER
-newgrp docker
+k3d cluster create demo-cluster --servers 1 --agents 1 --port "8080:80@loadbalancer"
 ```
-8. Verify docker (Empty table prints out successfully)
+4. Test
 ```bash
-docker ps
-systemctl | grep docker
+kubectl get nodes
 ```
-9. Install terraform
+5. Run terraform
 ```bash
-sudo yum install -y yum-utils shadow-utils
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-sudo yum install terraform
+terraform init -upgrade
+terraform apply -auto-approve
 ```
-10. Verify terraform (Terraform installed)
+10. View resources (Terraform installed)
 ```bash
 terraform -version
 ```
